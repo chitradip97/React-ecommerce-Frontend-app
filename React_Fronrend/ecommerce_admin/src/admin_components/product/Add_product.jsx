@@ -10,6 +10,19 @@ function Add_product() {
     const [prodprice,setProdprice]=useState("");
     const [prodqnty,setProdqnty]=useState("");
     
+    const handleSubmit=(e)=>{
+        e.preventDefault();
+       
+            axios.post("http://127.0.0.1:1234/api/category",{catName:catName,catStock:catStock})
+               .then((Response)=>{
+                   console.log(Response.data);
+                   setCatname(" ");
+                   setCatstock(" ");
+                   toast.success("Insert Successfully!",{
+                    position: "top-center",
+                   });
+               })  
+       }
     return ( 
         <>
         {/* <h1>This is add product</h1> */}
@@ -58,7 +71,7 @@ function Add_product() {
                     </div>
                 </div>
                 </div>
-            
+                <ToastContainer />
         </>
      );
 }
