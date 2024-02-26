@@ -1,24 +1,30 @@
 import React from "react";
 import { NavLink } from 'react-router-dom';
-import { useRef } from "react";
+import { useRef,useState } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 function Admin_login() {
-  const nmref=useRef('');
-  const numref=useRef('');
-  const emref=useRef('');
-  const passref=useRef('');
+  // const nmref=useRef('');
+  // const numref=useRef('');
+  // const emref=useRef('');
+  // const passref=useRef('');
+  const [name,setName]=useState("");
+    const [number,setNumber]=useState("");
+    const [email,setEmail]=useState("");
+    const [password,setPassword]=useState("");
 
   
   const submitReg=(e)=>{
     e.preventDefault();
    
-        axios.post("http://127.0.0.1:1234/api/Register",{Name:nmref,Number:numref,Email:emref,Password:passref})
+        axios.post("http://127.0.0.1:1234/api/register",{Name:name,Number:number,Email:email,Password:password})
            .then((Response)=>{
                console.log(Response.data);
-              //  setCatname(" ");
-              //  setCatstock(" ");
+               setName(" ");
+               setNumber(" ");
+               setEmail(" ");
+               setPassword(" ");
                toast.success("Insert Successfully!",{
                 position: "top-center",
                });
@@ -57,7 +63,8 @@ function Admin_login() {
                               type="text"
                               id="form3Example1"
                               className="form-control"
-                              ref={nmref}
+                              // ref={nmref}
+                              onChange={(e)=>{setName(e.target.value)}}
                             />
                             <label
                               className="form-label"
@@ -73,7 +80,8 @@ function Admin_login() {
                               type="text"
                               id="form3Example2"
                               className="form-control"
-                              ref={numref}
+                              // ref={numref}
+                              onChange={(e)=>{setNumber(e.target.value)}}
                             />
                             <label
                               className="form-label"
@@ -90,7 +98,8 @@ function Admin_login() {
                           type="email"
                           id="form3Example3"
                           className="form-control"
-                          ref={emref}
+                          // ref={emref}
+                          onChange={(e)=>{setEmail(e.target.value)}}
                         />
                         <label className="form-label" htmlFor="form3Example3">
                           Email address
@@ -102,7 +111,8 @@ function Admin_login() {
                           type="password"
                           id="form3Example4"
                           className="form-control"
-                          ref={passref}
+                          // ref={passref}
+                          onChange={(e)=>{setPassword(e.target.value)}}
                         />
                         <label className="form-label" htmlFor="form3Example4">
                           Password
@@ -170,6 +180,7 @@ function Admin_login() {
         </section>
         {/* Section: Design Block */}
       </div>
+      <ToastContainer />
     </>
   );
 }

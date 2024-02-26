@@ -1,8 +1,41 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink,useNavigate } from "react-router-dom";
+import { useState,useEffect } from 'react';
+import axios from 'axios';
+
 
 
 function Admin_login() {
+
+  const [login, setLogin] = useState([]);
+  const [email,setEmail]=useState("");
+  const [password,setPassword]=useState("");
+  const navigate=useNavigate();
+  async function getAlllogin() {
+    try {
+      const login_all = await axios.get(
+        "http://127.0.0.1:1234/api/register"
+      );
+      console.log(login_all.data);
+      setLogin(login_all.data);
+
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  useEffect(() => {
+    
+    getAlllogin();
+  }, []);
+  const submitSignin=()=>{
+    login.filter((val)=>{
+       if(val.email==email && val.password==password)
+       {
+         localStorage.setItem('login',true);
+         return navigate('/')
+       }
+    })
+  }
   return (
     <>
       <div className="container mt-5">
@@ -32,6 +65,7 @@ function Admin_login() {
                         type="email"
                         id="form2Example1"
                         className="form-control"
+                        onChange={(e)=>{setEmail(e.target.value)}}
                       />
                       <label className="form-label" htmlFor="form2Example1">
                         Email address
@@ -43,6 +77,7 @@ function Admin_login() {
                         type="password"
                         id="form2Example2"
                         className="form-control"
+                        onChange={(e)=>{setPassword(e.target.value)}}
                       />
                       <label className="form-label" htmlFor="form2Example2">
                         Password
@@ -78,6 +113,7 @@ function Admin_login() {
                     <button
                       type="button"
                       className="btn btn-primary btn-block mb-4"
+                      onClick={submitSignin}
                     >
                       Sign in
                     </button>

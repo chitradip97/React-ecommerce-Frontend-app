@@ -66,9 +66,9 @@ function Navbar() {
                 <hr className="dropdown-divider" />
               </li>
               <li>
-                <Link className="dropdown-item" href="#!">
+                <button className="dropdown-item" onClick={()=>{localStorage.removeItem('login')}}>
                   Logout
-                </Link>
+                </button>
               </li>
             </ul>
           </li>
