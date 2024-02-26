@@ -22,6 +22,8 @@ import Add_category from './admin_components/category/Add_categoty';
 import View_category from './admin_components/category/View_category';
 import Customer_details from './admin_components/customer/Customer_details';
 import Customer_purchase from './admin_components/customer/Customer_purchase';
+import Admin_register from './admin_components/Authorization/Admin_register';
+import Admin_login from './admin_components/Authorization/Admin_login';
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -33,7 +35,7 @@ const router=createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<App/>}>
       
-        <Route index  element={<Dashboard/>}/>
+        <Route path='/'  element={<Dashboard/>}/>
         <Route path='Profile'  element={<Profile/>}/>
         <Route path='Customer'  element={<Customer/>}>
           <Route path='Customer-details'  element={<Customer_details/>}/>
@@ -51,6 +53,8 @@ const router=createBrowserRouter(
         <Route path='Orders'  element={<Orders/>}/>
         <Route path='Blogs'  element={<Blogs/>}/>
         <Route path='Banner'  element={<Banner/>}/>
+        <Route path='Admin-register'  element={<Admin_register/>}/>
+        <Route path='Admin-login'  element={<Admin_login/>}/>
       
 
     </Route>

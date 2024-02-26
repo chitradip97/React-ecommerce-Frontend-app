@@ -53,13 +53,13 @@ function Navbar() {
               aria-labelledby="navbarDropdown"
             >
               <li>
-                <Link className="dropdown-item" href="#!">
-                  Settings
+                <Link className="dropdown-item" to="Admin-register">
+                  Register
                 </Link>
               </li>
               <li>
-                <Link className="dropdown-item" href="#!">
-                  Activity Log
+                <Link className="dropdown-item" to="Admin-login">
+                  Login
                 </Link>
               </li>
               <li>

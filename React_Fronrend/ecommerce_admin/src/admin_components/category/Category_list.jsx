@@ -58,7 +58,7 @@ function Category_list(props) {
                                           {category.map((cat, i) => {
                                               return (
                                               <tr key={i}>
-                                                  <td>{cat.id}</td>
+                                                  <td>{i+1}</td>
                                                   <td>{cat.category_name}</td>
                                                   <td>{cat.category_stock}</td>
                                                   <td><button class="btn btn-success"
