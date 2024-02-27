@@ -8,7 +8,7 @@ function Product_list(props) {
     async function getAllproduct() {
       try {
         const products_all = await axios.get(
-          "http://127.0.0.1:1234/api/product"
+          "http://127.0.0.1:1234/api/products"
         );
         console.log(products_all.data);
         setProduct(products_all.data);

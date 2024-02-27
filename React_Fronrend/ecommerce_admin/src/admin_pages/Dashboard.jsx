@@ -102,7 +102,18 @@ console.log(login)
   }
   else{
     return(
-<h1>Please Login first</h1>
+      <>
+        <div className="container mx-4 mt-2 ">
+          <div className="row">
+          <div class="alert alert-danger">
+            <strong>Permission denied!</strong> Please Login first.
+          </div>
+
+          </div>
+        {/* <h1>Please Login first</h1> */}
+        </div>
+      </>
+
     )
     
   }

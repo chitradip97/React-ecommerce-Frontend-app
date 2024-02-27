@@ -33,26 +33,35 @@ function Add_product() {
     const handleSubmit=(e)=>{
         e.preventDefault();
         const data=new FormData();
-        // data.append('category',category);
-        // data.append('prodName',prodName);
-        // data.append('proddesc',proddesc);
-        // data.append('prodprice',prodprice);
-        // data.append('prodqnty',prodqnty);
+         data.append('category',category);
+         data.append('prodName',prodName);
+         data.append('proddesc',proddesc);
+         data.append('prodprice',prodprice);
+         data.append('prodqnty',prodqnty);
          data.append('prodimg',prodimg);
         const config = {     
             headers: { 'content-type': 'multipart/form-data' }
         }
-        console.log(data);
-            axios.post("http://127.0.0.1:1234/api/products",
-            {category:category,prodName:prodName,proddesc:proddesc,prodprice:prodprice,prodqnty:prodqnty,data}
-            ,config)
-               .then((Response)=>{
-                   console.log(Response.data);
+    //     console.log(data);
+    //         axios.post("http://127.0.0.1:1234/api/products",
+    //         {category:category,prodName:prodName,proddesc:proddesc,prodprice:prodprice,prodqnty:prodqnty,data}
+    //         ,config)
+    //            .then((Response)=>{
+    //                console.log(Response.data);
                    
-               }).catch(error => {
-                console.log(error);
-            });  
-       }
+    //            }).catch(error => {
+    //             console.log(error);
+    //         });  
+    //    }
+       console.log(data);
+       axios.post("http://127.0.0.1:1234/api/products",data,{})
+          .then((Response)=>{
+              console.log(Response.data);
+              
+          }).catch(error => {
+           console.log(error);
+       });  
+  }
     return ( 
         <>
         {/* <h1>This is add product</h1> */}
@@ -66,7 +75,7 @@ function Add_product() {
                         <h5 className="basic_font">Add Product</h5> 
                         </div>
                         <div className="card-body">
-                            <form onSubmit={handleSubmit}  encType='multipart/form-data'>
+                            <form onSubmit={handleSubmit}  >
                                 <div className="mb-3 mt-1 col-xl-12">
                                 <label for="product_category" className="form-label basic_font">Category :</label>
                                 
@@ -103,7 +112,7 @@ function Add_product() {
                                         <label for="prod_img" className="form-label basic_font ">Product image :</label>
                                         <input type="file" className="form-control prod_img" name="prod_img" id="prod_img" onChange={(e)=>{
                                             console.log(e);
-                                            setProdimg(e.target.files)}}/>
+                                            setProdimg(e.target.files[0])}}/>
                                     </div>
                                     
                                 </div>

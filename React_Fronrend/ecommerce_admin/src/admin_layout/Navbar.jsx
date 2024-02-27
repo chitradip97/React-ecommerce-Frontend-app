@@ -1,6 +1,7 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import {Link,useNavigate} from "react-router-dom";
 function Navbar() {
+  const navigate=useNavigate();
   return (
     <>
       <nav className="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -66,7 +67,9 @@ function Navbar() {
                 <hr className="dropdown-divider" />
               </li>
               <li>
-                <button className="dropdown-item" onClick={()=>{localStorage.removeItem('login')}}>
+                <button className="dropdown-item" onClick={()=>{
+                  localStorage.removeItem('login')
+                  navigate('/')}}>
                   Logout
                 </button>
               </li>
