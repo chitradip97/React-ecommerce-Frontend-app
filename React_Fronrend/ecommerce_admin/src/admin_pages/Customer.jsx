@@ -25,7 +25,14 @@ function Customer() {
     
         axios.delete(`http://127.0.0.1:1234/api/customer-view/${id}`).then(()=>{getAllcustomer()})
        }
-  
+       const login=localStorage.getItem('login');
+       const[loginenable,setLoginenable]=useState('');
+       useEffect(()=>{
+       setLoginenable(login)
+       },[loginenable])
+       console.log(login)
+       if(login)
+    {
     return ( 
         // <>
        
@@ -138,6 +145,24 @@ function Customer() {
            </div>
     </>
      );
+    }
+    else{
+        return(
+          <>
+            <div className="container mx-4 mt-2 ">
+              <div className="row">
+              <div class="alert alert-danger">
+                <strong>Permission denied!</strong> Please Login first.
+              </div>
+    
+              </div>
+            {/* <h1>Please Login first</h1> */}
+            </div>
+          </>
+    
+        )
+        
+      }
 }
 
 export default Customer;

@@ -12,6 +12,7 @@ function Add_product() {
     const [categorylist, setCategorylist] = useState([]);
     const [category, setCategory] = useState('');
     const [prodimg, setProdimg] = useState('');
+    const [img,setImg]=useState('');
 
 
     async function getAllcategory() {
@@ -29,6 +30,15 @@ function Add_product() {
         
         getAllcategory();
       }, []);
+
+
+      const imghandlechange=(e)=>{
+        const imagesArray = [];
+        for (let i = 0; i < e.target.files.length; i++) {
+            imagesArray.push(e.target.files[i]);
+          }
+          setImg(imagesArray);
+    }
     
     const handleSubmit=(e)=>{
         e.preventDefault();
@@ -38,10 +48,13 @@ function Add_product() {
          data.append('proddesc',proddesc);
          data.append('prodprice',prodprice);
          data.append('prodqnty',prodqnty);
-         data.append('prodimg',prodimg);
-        const config = {     
-            headers: { 'content-type': 'multipart/form-data' }
-        }
+        //  data.append('prodimg',prodimg);
+        for (let i = 0; i < img.length; i++) {
+            data.append("images[]", img[i]);
+          }
+        // const config = {     
+        //     headers: { 'content-type': 'multipart/form-data' }
+        // }
     //     console.log(data);
     //         axios.post("http://127.0.0.1:1234/api/products",
     //         {category:category,prodName:prodName,proddesc:proddesc,prodprice:prodprice,prodqnty:prodqnty,data}
@@ -57,6 +70,9 @@ function Add_product() {
        axios.post("http://127.0.0.1:1234/api/products",data,{})
           .then((Response)=>{
               console.log(Response.data);
+              toast.success("Insert Successfully!",{
+                position: "top-center",
+               });
               
           }).catch(error => {
            console.log(error);
@@ -110,9 +126,7 @@ function Add_product() {
                                     </div>
                                     <div className="col-xl-6 col-md-12">
                                         <label for="prod_img" className="form-label basic_font ">Product image :</label>
-                                        <input type="file" className="form-control prod_img" name="prod_img" id="prod_img" onChange={(e)=>{
-                                            console.log(e);
-                                            setProdimg(e.target.files[0])}}/>
+                                        <input type="file" className="form-control prod_img" name="prod_img" id="prod_img" multiple onChange={imghandlechange}/>
                                     </div>
                                     
                                 </div>
