@@ -20,6 +20,7 @@ function Product_list(props) {
       
         getAllproduct();
     }, []);
+    
 
     const handleDelete=(id)=>{
       

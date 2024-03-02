@@ -11,7 +11,7 @@ function Add_product() {
     const [prodqnty,setProdqnty]=useState("");
     const [categorylist, setCategorylist] = useState([]);
     const [category, setCategory] = useState('');
-    const [prodimg, setProdimg] = useState('');
+    const [profimg, setProfimg] = useState('');
     const [img,setImg]=useState('');
 
 
@@ -48,7 +48,7 @@ function Add_product() {
          data.append('proddesc',proddesc);
          data.append('prodprice',prodprice);
          data.append('prodqnty',prodqnty);
-        //  data.append('prodimg',prodimg);
+          data.append('profimg',profimg);
         for (let i = 0; i < img.length; i++) {
             data.append("images[]", img[i]);
           }
@@ -123,6 +123,10 @@ function Add_product() {
                                     <div className="col-xl-6 col-md-12">
                                         <label for="product_quantity" className="form-label basic_font ">Quantity :</label>
                                         <input type="number" className="form-control prod_qnty" name="prod_quantity" id="product_quantity" onChange={(e)=>{setProdqnty(e.target.value)}}/>
+                                    </div>
+                                    <div className="col-xl-6 col-md-12">
+                                        <label for="prod_img" className="form-label basic_font ">Product profile image :</label>
+                                        <input type="file" className="form-control prod_img" name="prod_img" id="prod_img" onChange={(e)=>{setProfimg(e.target.files[0])}}/>
                                     </div>
                                     <div className="col-xl-6 col-md-12">
                                         <label for="prod_img" className="form-label basic_font ">Product image :</label>
