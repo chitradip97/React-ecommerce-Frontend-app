@@ -9,6 +9,8 @@ import reportWebVitals from './reportWebVitals';
 import User_login from './user_pages/Auth_pages/User_login';
 import Registration from './user_pages/Auth_pages/Registration';
 import Home from './user_pages/Home'
+import Product_list from './user_pages/Product_list';
+import Watches_list from './user_pages/Watches_list';
 
 
 import {
@@ -25,6 +27,8 @@ const router=createBrowserRouter(
       <Route index element={<Home/>}/>
       <Route path='Registration' element={<Registration/>}/>
       <Route path='User_login' element={<User_login/>}/>
+      <Route path='Product-list' element={<Product_list/>}/>
+      <Route path='Watches-list' element={<Watches_list/>}/>
       
       
       
