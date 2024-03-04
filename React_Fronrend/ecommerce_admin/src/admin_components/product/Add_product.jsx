@@ -6,6 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function Add_product() {
     const [prodName,setProdname]=useState("");
+    const [brandName,setBrandname]=useState("");
     const [proddesc,setProddesc]=useState("");
     const [prodprice,setProdprice]=useState("");
     const [prodqnty,setProdqnty]=useState("");
@@ -45,6 +46,7 @@ function Add_product() {
         const data=new FormData();
          data.append('category',category);
          data.append('prodName',prodName);
+         data.append('brandName',brandName);
          data.append('proddesc',proddesc);
          data.append('prodprice',prodprice);
          data.append('prodqnty',prodqnty);
@@ -110,9 +112,13 @@ function Add_product() {
                                 <label for="product_name" className="form-label basic_font">Product :</label>
                                 <input type="text" className="form-control prod_nm" name="prod_nm" id="product_name" placeholder="Enter your Product name" onChange={(e)=>{setProdname(e.target.value)}}/>
                                 </div>
+                                <div className="mb-3 mt-1">
+                                <label for="brand_name" className="form-label basic_font">Brand Name :</label>
+                                <input type="text" className="form-control" name="brand_nm" id="brand_name" placeholder="Enter your Brand name" onChange={(e)=>{setBrandname(e.target.value)}}/>
+                                </div>
                                
                                 <div className="mb-3 mt-1">
-                                <label for="product_dec" className="form-label basic_font ">Category Description :</label>
+                                <label for="product_dec" className="form-label basic_font ">Product Description :</label>
                                 <textarea className="form-control prod_dec" placeholder="Enter your Product Descrption" rows="3" id="product_dec" name="description" onChange={(e)=>{setProddesc(e.target.value)}}></textarea>
                                 </div>
                                 <div className="row mb-3 mt-1"  >
