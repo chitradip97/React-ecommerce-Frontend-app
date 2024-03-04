@@ -1,6 +1,23 @@
-import React from 'react'
+import React, { useEffect,useState } from 'react'
 
 function PhoneFilter(props) {
+  const[price,setPrice]=useState([]);
+  const[Prodpricerange,setProdpricerange]=useState({maxprice:'',minprice:''});
+  const Product_price=()=>{
+    props.mobile.map((data)=>{
+       console.log(data.product_price)
+      setPrice([...price,data.product_price])
+    })
+    console.log(price);
+    let minValue = Math.min(...price);
+    let maxValue = Math.max(...price);
+    setProdpricerange({maxprice:maxValue,minprice:minValue});
+    console.log(Prodpricerange)
+  }
+  useEffect(()=>{
+    Product_price()
+  },[]);
+
     return ( 
         <>
             <div className="col-md-3 bg-gray">
@@ -53,15 +70,16 @@ function PhoneFilter(props) {
                 {/* <!-- Price Range Filter --> */}
                 <div className="mb-3">
                   <label for="priceRange" className="form-label">
-                    Price Range:
+                    Price Range:{props.Prodprice}
                   </label>
                   <input
                     type="range"
                     className="form-range"
                     id="priceRange"
-                    min="0"
-                    max={props.maxprice}
-                    step="50"
+                    min={Prodpricerange.minprice}
+                    max={Prodpricerange.maxprice}
+                    //  step={1000}
+                    value={props.Prodprice}
                     onChange={props.handlePrice}
                   />
                 </div>

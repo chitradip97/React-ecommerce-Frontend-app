@@ -8,8 +8,9 @@ function Product_list() {
     const [product, setProduct] = useState([]);
   const [mobile, setMobile] = useState([]);
   const [filterTags, setFilterTags] = useState([]);
-  const[price,setPrice]=useState([]);
-  const[maxprice,setMaxPrice]=useState();
+  // const[price,setPrice]=useState([]);
+  // const[Prodpricerange,setProdpricerange]=useState({maxprice:'',minprice:''});
+  const[Prodprice,setProdprice]=useState();
   async function getAllproduct() {
     try {
       const products_all = await axios.get(
@@ -29,11 +30,25 @@ function Product_list() {
     );
     setMobile(Mobiles);
     console.log(Mobiles);
+    
   };
+
+  // const Product_price=()=>{
+  //   mobile.map((data)=>{
+  //      console.log(data.product_price)
+  //     setPrice([...price,data.product_price])
+  //   })
+  //   console.log(price);
+  //   let minValue = Math.min(...price);
+  //   let maxValue = Math.max(...price);
+  //   setProdpricerange({maxprice:maxValue,minprice:minValue});
+  //   console.log(Prodpricerange)
+  // }
 
   useEffect(() => {
     getAllproduct();
     console.log('useEffect called');
+    // Product_price();
   },[product] );
 
   const handleFilter=(event)=>{
@@ -55,17 +70,16 @@ function Product_list() {
     }
    })
 
-   const handlePrice=()=>{
-    mobile.forEach((data)=>{setPrice([...price,data.product_price
-    ])})
-    setMaxPrice(Math.max(price));
+   const handlePrice=(event)=>{
+    setProdprice(event.target.value);
+    console.log(Prodprice)
 
    }
   
     return (
     <div className="container-fluid">
       <div className="row">
-        <PhoneFilter handleFilter={handleFilter} handlePrice={handlePrice} maxprice={maxprice}/>
+        <PhoneFilter mobile={mobile} handleFilter={handleFilter} handlePrice={handlePrice} />
         <PhoneFilterOrNot mobile={mobile} filteredDATA={filteredDATA} filterTags={filterTags} />
         
       </div>
