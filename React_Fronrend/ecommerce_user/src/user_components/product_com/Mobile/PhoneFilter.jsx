@@ -70,7 +70,7 @@ function PhoneFilter(props) {
                 {/* <!-- Price Range Filter --> */}
                 <div className="mb-3">
                   <label for="priceRange" className="form-label">
-                    Price Range:{props.Prodprice}{props.Prodpricerange.maxprice}
+                    Price Range:{props.Prodprice}
                   </label>
                   <input
                     type="range"
@@ -82,6 +82,10 @@ function PhoneFilter(props) {
                     value={props.Prodprice}
                     onChange={props.handlePrice}
                   />
+                </div>
+                <div className="mb-3 ">
+                <label for="category_name" className="form-label basic_font">Name search :</label>
+                <input type="text" className="form-control cat_nm" name="category_nm" id="category_name" placeholder="Enter your Category name" onChange={props.nameHandler} />
                 </div>
     
                 {/* <!-- Add more filters as needed --> */}

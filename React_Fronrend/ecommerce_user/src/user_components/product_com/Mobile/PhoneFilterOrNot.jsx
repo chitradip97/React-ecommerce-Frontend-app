@@ -4,7 +4,7 @@ import FilteredPhone from './FilteredPhone';
 
 function PhoneFilterOrNot(props) {
     // console.log(props.filterTags.length)
-    if(props.filterTags.length<=0){
+    if(props.filterTags.length<=0 && props.Prodprice<=0 && props.prodname==''){
         return ( 
             <>
             <AllBrandPhoneList mobile={props.mobile}/>
@@ -14,7 +14,7 @@ function PhoneFilterOrNot(props) {
     else{
         return(
             <>
-                <FilteredPhone mobile={props.mobile} filteredDATA={props.filteredDATA}/>
+                <FilteredPhone mobile={props.mobile} filteredDATA={props.filteredDATA}  nameHandler={props.nameHandler}/>
             </>
         )
     }

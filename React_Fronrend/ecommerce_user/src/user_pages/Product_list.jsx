@@ -13,7 +13,8 @@ function Product_list() {
   const [filterTags, setFilterTags] = useState([]);
    const[price,setPrice]=useState([]);
    const[Prodpricerange,setProdpricerange]=useState({maxprice:'',minprice:''});
-  const[Prodprice,setProdprice]=useState();
+  const[Prodprice,setProdprice]=useState(0);
+  const[prodname,setprodname]=useState('');
    async function getAllproduct() {
    try {
        const products_all = await axios.get(
@@ -43,14 +44,22 @@ function Product_list() {
    const Product_price=()=>{
      mobile.map((data)=>{
         console.log(data.product_price)
-       setPrice([...price,data.product_price])
+       setPrice(price=>[...price,data.product_price])
      })
-     console.log(price);
-     let minValue = Math.min(...price);
-     let maxValue = Math.max(...price);
-     setProdpricerange({maxprice:maxValue,minprice:minValue});
-     console.log(minValue,maxValue)
-     console.log(Prodpricerange)
+    //  console.log(price);
+    //  let minValue = Math.min(...price);
+    //  let maxValue = Math.max(...price);
+    //  setProdpricerange({maxprice:maxValue,minprice:minValue});
+    //  console.log(minValue,maxValue)
+    //  console.log(Prodpricerange)
+   }
+   const priceRange=()=>{
+    console.log(price);
+    let minValue = Math.min(...price);
+    let maxValue = Math.max(...price);
+    setProdpricerange({maxprice:maxValue,minprice:minValue});
+    console.log(minValue,maxValue)
+    console.log(Prodpricerange)
    }
 
    useEffect(() => {
@@ -60,9 +69,18 @@ function Product_list() {
    },[] );
    useEffect(()=>{
     getAllMobile();
+    
+    
+   },[product]);
+
+   useEffect(()=>{
     Product_price();
+   },[mobile]);
+  
+   useEffect(()=>{
     console.log(price);
-   },[product,price])
+    priceRange()
+   },[price])
    
   const handleFilter=(event)=>{
     if(event.target.checked)
@@ -77,23 +95,47 @@ function Product_list() {
   }
 
    const filteredDATA = mobile.filter((mob)=>{
-    if(filterTags.includes(mob.Brand_name))
+    if(filterTags.includes(mob.Brand_name) && Prodprice==0 && prodname=='')
     {
       return mob;
+    }
+    else if(filterTags.length<=0 &&Prodprice>0 && prodname=='')
+    {
+       if(mob.product_price<Prodprice)
+       {console.log('price sorted')
+       console.log(mob)
+        return mob;
+       }
+    }
+    else if(filterTags.includes(mob.Brand_name) && mob.product_price<Prodprice && prodname=='')
+    {
+        return mob;
+    }
+    else if(prodname!='')
+    {
+      if(mob.product_name==prodname)
+      {
+        return mob;
+      }
     }
    })
 
    const handlePrice=(event)=>{
     setProdprice(event.target.value);
-    console.log(Prodprice)
+    console.log(Prodprice);
 
+
+   }
+   const nameHandler=(event)=>{
+    setprodname(...prodname,event.target.value)
+    console.log(prodname);
    }
   
     return (
     <div className="container-fluid">
       <div className="row">
         <PhoneFilter mobile={mobile} handleFilter={handleFilter} handlePrice={handlePrice} Prodprice={Prodprice} Prodpricerange={Prodpricerange}/>
-        <PhoneFilterOrNot mobile={mobile} filteredDATA={filteredDATA} filterTags={filterTags} />
+        <PhoneFilterOrNot mobile={mobile} filteredDATA={filteredDATA} filterTags={filterTags} Prodprice={Prodprice}  prodname={prodname} nameHandler={nameHandler} />
         
       </div>
     </div>
