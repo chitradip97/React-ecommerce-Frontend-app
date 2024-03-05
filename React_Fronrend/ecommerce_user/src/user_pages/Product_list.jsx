@@ -127,15 +127,16 @@ function Product_list() {
 
    }
    const nameHandler=(event)=>{
-    setprodname(...prodname,event.target.value)
+    console.log(event.target.value)
+    setprodname(event.target.value)
     console.log(prodname);
    }
   
     return (
     <div className="container-fluid">
       <div className="row">
-        <PhoneFilter mobile={mobile} handleFilter={handleFilter} handlePrice={handlePrice} Prodprice={Prodprice} Prodpricerange={Prodpricerange}/>
-        <PhoneFilterOrNot mobile={mobile} filteredDATA={filteredDATA} filterTags={filterTags} Prodprice={Prodprice}  prodname={prodname} nameHandler={nameHandler} />
+        <PhoneFilter mobile={mobile} handleFilter={handleFilter} handlePrice={handlePrice} Prodprice={Prodprice} Prodpricerange={Prodpricerange} nameHandler={nameHandler} />
+        <PhoneFilterOrNot mobile={mobile} filteredDATA={filteredDATA} filterTags={filterTags} Prodprice={Prodprice}  prodname={prodname} />
         
       </div>
     </div>

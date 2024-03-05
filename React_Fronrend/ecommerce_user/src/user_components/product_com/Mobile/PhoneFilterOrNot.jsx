@@ -14,7 +14,7 @@ function PhoneFilterOrNot(props) {
     else{
         return(
             <>
-                <FilteredPhone mobile={props.mobile} filteredDATA={props.filteredDATA}  nameHandler={props.nameHandler}/>
+                <FilteredPhone mobile={props.mobile} filteredDATA={props.filteredDATA}  />
             </>
         )
     }
