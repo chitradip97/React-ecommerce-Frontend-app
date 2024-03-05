@@ -1,29 +1,32 @@
 import React from "react";
-import { useState,useEffect } from "react";
+import { useState,useEffect,useContext } from "react";
 import axios from "axios";
 import PhoneFilter from "../user_components/product_com/Mobile/PhoneFilter";
 import PhoneFilterOrNot from "../user_components/product_com/Mobile/PhoneFilterOrNot";
+// import { productdata } from "../App";
 
 function Product_list() {
+  // const product=useContext(productdata)
+  // console.log(product)
     const [product, setProduct] = useState([]);
   const [mobile, setMobile] = useState([]);
   const [filterTags, setFilterTags] = useState([]);
-  // const[price,setPrice]=useState([]);
-  // const[Prodpricerange,setProdpricerange]=useState({maxprice:'',minprice:''});
+   const[price,setPrice]=useState([]);
+   const[Prodpricerange,setProdpricerange]=useState({maxprice:'',minprice:''});
   const[Prodprice,setProdprice]=useState();
-  async function getAllproduct() {
-    try {
-      const products_all = await axios.get(
-        "http://127.0.0.1:1234/api/products"
-      )
-      console.log(products_all.data);
-      setProduct(products_all.data);
-      getAllMobile();
+   async function getAllproduct() {
+   try {
+       const products_all = await axios.get(
+         "http://127.0.0.1:1234/api/products"
+       )
+       console.log(products_all.data);
+       setProduct(products_all.data);
+      //  getAllMobile();
       
-    } catch (error) {
-      console.log(error);
-    }
-  }
+     } catch (error) {
+       console.log(error);
+     }
+   }
   const getAllMobile = () => {
     const Mobiles = product.filter(
       (val, index) => val.category_name == "Mobile"
@@ -32,25 +35,35 @@ function Product_list() {
     console.log(Mobiles);
     
   };
+//   useEffect(()=>{
 
-  // const Product_price=()=>{
-  //   mobile.map((data)=>{
-  //      console.log(data.product_price)
-  //     setPrice([...price,data.product_price])
-  //   })
-  //   console.log(price);
-  //   let minValue = Math.min(...price);
-  //   let maxValue = Math.max(...price);
-  //   setProdpricerange({maxprice:maxValue,minprice:minValue});
-  //   console.log(Prodpricerange)
-  // }
+// // setProduct(productdata);
+//   },[])
 
-  useEffect(() => {
-    getAllproduct();
-    console.log('useEffect called');
-    // Product_price();
-  },[product] );
+   const Product_price=()=>{
+     mobile.map((data)=>{
+        console.log(data.product_price)
+       setPrice([...price,data.product_price])
+     })
+     console.log(price);
+     let minValue = Math.min(...price);
+     let maxValue = Math.max(...price);
+     setProdpricerange({maxprice:maxValue,minprice:minValue});
+     console.log(minValue,maxValue)
+     console.log(Prodpricerange)
+   }
 
+   useEffect(() => {
+     getAllproduct();
+     console.log('useEffect called');
+     // Product_price();
+   },[] );
+   useEffect(()=>{
+    getAllMobile();
+    Product_price();
+    console.log(price);
+   },[product,price])
+   
   const handleFilter=(event)=>{
     if(event.target.checked)
     {
@@ -79,7 +92,7 @@ function Product_list() {
     return (
     <div className="container-fluid">
       <div className="row">
-        <PhoneFilter mobile={mobile} handleFilter={handleFilter} handlePrice={handlePrice} />
+        <PhoneFilter mobile={mobile} handleFilter={handleFilter} handlePrice={handlePrice} Prodprice={Prodprice} Prodpricerange={Prodpricerange}/>
         <PhoneFilterOrNot mobile={mobile} filteredDATA={filteredDATA} filterTags={filterTags} />
         
       </div>

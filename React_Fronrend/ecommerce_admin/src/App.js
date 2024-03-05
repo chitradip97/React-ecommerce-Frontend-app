@@ -4,7 +4,7 @@ import Master_layout from './admin_layout/Master_layout';
 import Admin_register from './admin_components/Authorization/Admin_register';
 import Admin_login from './admin_components/Authorization/Admin_login';
 import Admin_authorization from './admin_pages/Admin_authorization';
-import { useState } from 'react';
+import { useState,useContext } from 'react';
 function App() {
   const[login,setLogin]=useState(true)
   // if(login==true)

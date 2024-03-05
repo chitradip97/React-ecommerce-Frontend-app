@@ -14,8 +14,8 @@ function Body_user() {
       )
       console.log(products_all.data);
       setProduct(products_all.data);
-      getAllMobile();
-      getAllWatches();
+      // getAllMobile();
+      // getAllWatches();
     } catch (error) {
       console.log(error);
     }
@@ -39,7 +39,11 @@ function Body_user() {
   useEffect(() => {
     getAllproduct();
     console.log('useEffect called');
-  },[product] );
+  },[] );
+  useEffect(()=>{
+    getAllMobile();
+    getAllWatches();
+  },[product])
   return (
     <>
       <>

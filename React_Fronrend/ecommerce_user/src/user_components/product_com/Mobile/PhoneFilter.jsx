@@ -1,22 +1,22 @@
 import React, { useEffect,useState } from 'react'
 
 function PhoneFilter(props) {
-  const[price,setPrice]=useState([]);
-  const[Prodpricerange,setProdpricerange]=useState({maxprice:'',minprice:''});
-  const Product_price=()=>{
-    props.mobile.map((data)=>{
-       console.log(data.product_price)
-      setPrice([...price,data.product_price])
-    })
-    console.log(price);
-    let minValue = Math.min(...price);
-    let maxValue = Math.max(...price);
-    setProdpricerange({maxprice:maxValue,minprice:minValue});
-    console.log(Prodpricerange)
-  }
-  useEffect(()=>{
-    Product_price()
-  },[]);
+  // const[price,setPrice]=useState([]);
+  // const[Prodpricerange,setProdpricerange]=useState({maxprice:'',minprice:''});
+  // const Product_price=()=>{
+  //     props.mobile.map((data)=>{
+  //       console.log(data.product_price)
+  //       setPrice([...price,data.product_price])
+  //     })
+  //     console.log(price);
+  //     let minValue = Math.min(...price);
+  //     let maxValue = Math.max(...price);
+  //     setProdpricerange({maxprice:maxValue,minprice:minValue});
+  //     console.log(Prodpricerange)
+  // }
+  // useEffect(()=>{
+  //   Product_price()
+  // },[price]);
 
     return ( 
         <>
@@ -70,14 +70,14 @@ function PhoneFilter(props) {
                 {/* <!-- Price Range Filter --> */}
                 <div className="mb-3">
                   <label for="priceRange" className="form-label">
-                    Price Range:{props.Prodprice}
+                    Price Range:{props.Prodprice}{props.Prodpricerange.maxprice}
                   </label>
                   <input
                     type="range"
                     className="form-range"
                     id="priceRange"
-                    min={Prodpricerange.minprice}
-                    max={Prodpricerange.maxprice}
+                    min={props.Prodpricerange.minprice}
+                    max={props.Prodpricerange.maxprice}
                     //  step={1000}
                     value={props.Prodprice}
                     onChange={props.handlePrice}
