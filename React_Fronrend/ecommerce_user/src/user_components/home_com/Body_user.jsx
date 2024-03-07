@@ -62,7 +62,7 @@ function Body_user() {
         <section className="py-1">
           <div className="container px-4 px-lg-5 mt-5">
             <div className="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-              {mobile.map((val, index) => {
+              {mobile.splice(0,8).map((val, index) => {
                 return (
                   <div className="col mb-5">
                     <div className="card h-100">
@@ -155,7 +155,7 @@ function Body_user() {
         <section className="py-1">
           <div className="container px-4 px-lg-5 mt-5">
             <div className="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-              {watches.map((val, index) => {
+              {watches.splice(0,8).map((val, index) => {
                 return (
                   <div className="col mb-5">
                     <div className="card h-100">
