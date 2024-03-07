@@ -90,12 +90,12 @@ function PhoneFilter(props) {
     
                 {/* <!-- Add more filters as needed --> */}
     
-                <button type="button" className="btn btn-primary" >
+                {/* <button type="button" className="btn btn-primary" >
                   Apply Filters
                 </button>
                 <button type="button" className="btn btn-secondary">
                   Reset Filters
-                </button>
+                </button> */}
               </div>
         </>
      );

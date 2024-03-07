@@ -8,11 +8,11 @@ import PhoneFilterOrNot from "../user_components/product_com/Mobile/PhoneFilterO
 function Product_list() {
   // const product=useContext(productdata)
   // console.log(product)
-    const [product, setProduct] = useState([]);
+  const [product, setProduct] = useState([]);
   const [mobile, setMobile] = useState([]);
   const [filterTags, setFilterTags] = useState([]);
-   const[price,setPrice]=useState([]);
-   const[Prodpricerange,setProdpricerange]=useState({maxprice:'',minprice:''});
+  const[price,setPrice]=useState([]);
+  const[Prodpricerange,setProdpricerange]=useState({maxprice:'',minprice:''});
   const[Prodprice,setProdprice]=useState(0);
   const[prodname,setprodname]=useState('');
    async function getAllproduct() {
