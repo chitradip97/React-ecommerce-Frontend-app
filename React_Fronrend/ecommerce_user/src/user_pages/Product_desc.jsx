@@ -14,6 +14,8 @@ function Product_desc() {
           `http://127.0.0.1:1234/api/products/${pid}`
         );
          console.log(products_desc.data);
+         console.log(products_desc.data.result);
+         console.log(products_desc.data.result2);
         setProduct(products_desc.data);
       } catch (error) {
         console.log(error);
