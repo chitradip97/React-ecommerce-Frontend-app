@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 function Navber_User() {
   return (
@@ -28,9 +28,9 @@ function Navber_User() {
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#!">
+                <NavLink className="nav-link" to="Product-desc">
                   About
-                </a>
+                </NavLink>
               </li>
               <li className="nav-item dropdown">
                 <a

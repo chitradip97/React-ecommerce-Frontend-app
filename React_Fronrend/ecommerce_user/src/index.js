@@ -11,6 +11,7 @@ import Registration from './user_pages/Auth_pages/Registration';
 import Home from './user_pages/Home'
 import Product_list from './user_pages/Product_list';
 import Watches_list from './user_pages/Watches_list';
+import Product_desc from './user_pages/Product_desc';
 
 
 import {
@@ -29,6 +30,7 @@ const router=createBrowserRouter(
       <Route path='User_login' element={<User_login/>}/>
       <Route path='Product-list' element={<Product_list/>}/>
       <Route path='Watches-list' element={<Watches_list/>}/>
+      <Route path='Product-desc/:pid' element={<Product_desc/>}/>
       
       
       
