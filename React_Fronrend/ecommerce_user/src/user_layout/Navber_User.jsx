@@ -1,7 +1,8 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink,useNavigate } from "react-router-dom";
 
 function Navber_User() {
+  const navigate=useNavigate();
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -111,9 +112,11 @@ function Navber_User() {
                     <hr className="dropdown-divider" />
                   </li>
                   <li>
-                    <Link className="dropdown-item" href="#!">
-                      Logout
-                    </Link>
+                  <button className="dropdown-item" onClick={()=>{
+                  localStorage.removeItem('login')
+                  navigate('/')}}>
+                  Logout
+                </button>
                   </li>
                 </ul>
               </li>
