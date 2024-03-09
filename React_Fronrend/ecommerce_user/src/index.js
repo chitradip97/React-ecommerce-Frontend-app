@@ -12,6 +12,7 @@ import Home from './user_pages/Home'
 import Product_list from './user_pages/Product_list';
 import Watches_list from './user_pages/Watches_list';
 import Product_desc from './user_pages/Product_desc';
+import Cart from './user_pages/Cart';
 
 
 import {
@@ -33,6 +34,7 @@ const router=createBrowserRouter(
       <Route path='Product-desc/:pid' element={<Product_desc/>}/>
       <Route path='/Product-list/Product-desc/:pid' element={<Product_desc/>}/>
       <Route path='/Watches-list/Product-desc/:pid' element={<Product_desc/>}/>
+      <Route path='Product-cart' element={<Cart />}/>
       
       
       
