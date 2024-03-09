@@ -31,6 +31,8 @@ const router=createBrowserRouter(
       <Route path='Product-list' element={<Product_list/>}/>
       <Route path='Watches-list' element={<Watches_list/>}/>
       <Route path='Product-desc/:pid' element={<Product_desc/>}/>
+      <Route path='/Product-list/Product-desc/:pid' element={<Product_desc/>}/>
+      <Route path='/Watches-list/Product-desc/:pid' element={<Product_desc/>}/>
       
       
       

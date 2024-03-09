@@ -1,22 +1,29 @@
 import React from "react";
+import '../user_assets/user_prod_des/css/Product.css';
 import { Link, useParams } from "react-router-dom";
-import { useState,useEffect } from 'react';
+import { useState,useEffect,useRef } from 'react';
 import axios from 'axios';
 import { NavLink } from 'react-router-dom';
+import DetailsThumb from "../user_components/product_details/DetailsThumb";
 
 function Product_desc() {
   const {pid}=useParams();
+  const myRef=useRef();
   console.log('product-id:',pid);
   const [product, setProduct] = useState([]);
+  const [prouctimg,setProductimg]=useState([]);
+  const [prodImgAll,setProdImgAll]=useState([]);
+  const [index,setIndex]=useState(0);
     async function getproduct() {
       try {
         const products_desc = await axios.get(
           `http://127.0.0.1:1234/api/products/${pid}`
         );
          console.log(products_desc.data);
-         console.log(products_desc.data.result);
-         console.log(products_desc.data.result2);
-        setProduct(products_desc.data);
+        //  console.log(products_desc.data.result);
+        //  console.log(products_desc.data.result2);
+        setProduct(products_desc.data.result);
+        setProductimg(products_desc.data.result2);
       } catch (error) {
         console.log(error);
       }
@@ -26,132 +33,78 @@ function Product_desc() {
         getproduct();
         // console.log(product)
     }, []);
+    const imgHanndle=()=>{
+      product.map(val=>setProdImgAll((prevState)=>([...prevState,val.product_image])));
+      prouctimg.map(val=>{
+        // console.log(val)
+         setProdImgAll((prevState)=>([...prevState,val.Image_path]))
+      })
+    }
 
   useEffect(()=>{
     console.log(product)
-  },[product])
+    console.log(prouctimg)
+    imgHanndle()
+    // setProdImgAll([...prodImgAll,product.product_image]);
+  },[product,prouctimg])
+   useEffect(()=>{
+     console.log(prodImgAll)
+     if(prodImgAll.length>0)
+     {
+      const ind = index;
+      myRef.current.children[ind].className = "active";
+     }
+      
+   },[prodImgAll])
+   
+
+   const handleTab = (ind )=>{
+    setIndex(ind)
+     const images = myRef.current.children;
+     console.log(images)
+     for(let i=0; i<images.length; i++){
+       images[i].className = images[i].className.replace("active", "");
+     }
+     images[ind].className = "active";
+  };
+if (prodImgAll.length>0)
+{
   return (
     <>
-      {/* <section className="py-5">
-        <div className="container px-4 px-lg-5 my-5">
-          <div className="row gx-4 gx-lg-5 align-items-center">
-            <div className="col-md-6">
-              <div className="border rounded-4 mb-3 d-flex justify-content-center">
-                <img
-                  className="card-img-top mb-5 mb-md-0"
-                  src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg"
-                  alt="..."
-                />
+    
+
+<div className="app">
+        {
+          // prodImgAll.map(item =>(
+            <div className="details">
+              <div className="big-img">
+                <img src={"http://127.0.0.1:1234/"+prodImgAll[index]} alt=""/>
               </div>
-              <div class="d-flex justify-content-center mb-3 item-thumb">
-                <a
-                  data-fslightbox="mygalley"
-                  className="border mx-1 rounded-2"
-                  target="_blank"
-                  data-type="image"
-                  href="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/detail1/big1.webp"
-                >
-                  <img
-                    width="60"
-                    height="60"
-                    className="rounded-2"
-                    src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/detail1/big1.webp"
-                  />
-                </a>
-                <a
-                  data-fslightbox="mygalley"
-                  className="border mx-1 rounded-2 item-thumb"
-                  target="_blank"
-                  data-type="image"
-                  href="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/detail1/big2.webp"
-                >
-                  <img
-                    width="60"
-                    height="60"
-                    className="rounded-2"
-                    src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/detail1/big2.webp"
-                  />
-                </a>
-                <a
-                  data-fslightbox="mygalley"
-                  className="border mx-1 rounded-2 item-thumb"
-                  target="_blank"
-                  data-type="image"
-                  href="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/detail1/big3.webp"
-                >
-                  <img
-                    width="60"
-                    height="60"
-                    className="rounded-2"
-                    src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/detail1/big3.webp"
-                  />
-                </a>
-                <a
-                  data-fslightbox="mygalley"
-                  className="border mx-1 rounded-2 item-thumb"
-                  target="_blank"
-                  data-type="image"
-                  href="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/detail1/big4.webp"
-                >
-                  <img
-                    width="60"
-                    height="60"
-                    className="rounded-2"
-                    src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/detail1/big4.webp"
-                  />
-                </a>
-                <Link
-                  data-fslightbox="mygalley"
-                  className="border mx-1 rounded-2 item-thumb"
-                  target="_blank"
-                  data-type="image"
-                  href="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/detail1/big.webp"
-                >
-                  <img
-                    width="60"
-                    height="60"
-                    className="rounded-2"
-                    src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/detail1/big.webp"
-                  />
-                </Link>
+              {/* {console.log(item)} */}
+
+              <div className="box">
+                <div className="row">
+                  <h2>{product[0].product_name}</h2>
+                  <span>Rs.{product[0].product_price}</span>
+                </div>
+                {/* <Color colors={item.colors} /> */}
+
+                <p>{product[0].product_desc}</p>
+                {/* <p>{item.content}</p> */}
+                
+                <DetailsThumb images={prodImgAll} tab={handleTab} myRef={myRef} />
+                <button className="cart">Add to cart</button>
+
               </div>
             </div>
-            <div className="col-md-6">
-              <div className="small mb-1">SKU: BST-498</div>
-              <h1 className="display-5 fw-bolder">Shop item template</h1>
-              <div className="fs-5 mb-5">
-                <span className="text-decoration-line-through">$45.00</span>
-                <span>$40.00</span>
-              </div>
-              <p className="lead">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Praesentium at dolorem quidem modi. Nam sequi consequatur
-                obcaecati excepturi alias magni, accusamus eius blanditiis
-                delectus ipsam minima ea iste laborum vero?
-              </p>
-              <div className="d-flex">
-                <input
-                  className="form-control text-center me-3"
-                  id="inputQuantity"
-                  type="num"
-                  value="1"
-                  style={{ maxWidth: "3rem" }}
-                />
-                <button
-                  className="btn btn-outline-dark flex-shrink-0"
-                  type="button"
-                >
-                  <i className="bi-cart-fill me-1"></i>
-                  Add to cart
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> */}
+          // ))
+        }
+      </div>
 
     </>
   );
+}
+  
 }
 
 export default Product_desc;

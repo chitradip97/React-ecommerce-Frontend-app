@@ -183,9 +183,14 @@ function Body_user() {
                       {/* Product actions*/}
                       <div className="card-footer p-4 pt-0 border-top-0 bg-transparent">
                         <div className="text-center">
+                        <div className="float-start">
                           <a className="btn btn-outline-dark mt-auto" href="#">
                             Add to Cart
                           </a>
+                          </div>
+                          <div className="float-end">
+                          <NavLink to={`Product-desc/${val.id}`}><button type="button" class="btn btn-info">View</button></NavLink>
+                          </div>
                         </div>
                       </div>
                     </div>
