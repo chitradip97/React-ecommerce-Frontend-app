@@ -3,6 +3,7 @@
 import User_master_layout from './user_layout/User_master_layout'
 import { useState,useEffect,createContext } from 'react';
 import axios from 'axios';
+import Context from './Context';
 // const productdata=createContext();
 function App() {
   // const [product, setProduct] = useState([]);
@@ -36,9 +37,9 @@ function App() {
   return (
     <div className="App">
       <div className="App">
-      {/* <productdata.Provider value={product}> */}
+      <Context>
         <User_master_layout/>
-      {/* </productdata.Provider> */}
+      </Context>
       </div>
     </div>
   );

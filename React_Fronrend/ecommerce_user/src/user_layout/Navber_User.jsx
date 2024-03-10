@@ -1,8 +1,11 @@
 import React from "react";
 import { Link, NavLink,useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { Cartcontext } from "../Context";
 
 function Navber_User() {
   const navigate=useNavigate();
+  const {cart}=useContext(Cartcontext)
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -71,7 +74,7 @@ function Navber_User() {
                 <i className="bi-cart-fill me-1" />
                 Cart
                 <span className="badge bg-dark text-white ms-1 rounded-pill">
-                  0
+                  {cart.length}
                 </span>
               </button>
             </form>
