@@ -2,8 +2,8 @@ import { createContext,useState } from "react";
 
 export const Cartcontext=createContext();
 
-const Context=({children})=>{
-    const [cart,setCart]=useState(['b','p','n','i']);
+const Context=({children})=>{console.log('context reloded')
+    const [cart,setCart]=useState([]);
     return <Cartcontext.Provider value={{cart,setCart}}>{children}</Cartcontext.Provider>
 };
 

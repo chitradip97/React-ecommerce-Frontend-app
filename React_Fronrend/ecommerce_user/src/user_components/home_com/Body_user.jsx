@@ -1,9 +1,12 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState,useContext } from "react";
 import { NavLink } from "react-router-dom";
 // import { ApiContent } from "../../services/ApiContent";
 import axios from "axios";
+import { Cartcontext } from "../../Context";
+
 
 function Body_user() {
+  const {cart,setCart}=useContext(Cartcontext)
   const [product, setProduct] = useState([]);
   const [mobile, setMobile] = useState([]);
   const [watches, setWatches] = useState([]);
@@ -86,8 +89,8 @@ function Body_user() {
                       <div className="card-footer p-4 pt-0 border-top-0 bg-transparent">
                         <div className="text-center ">
                           <div className="float-start">
-                          <NavLink to='Product-cart' className="btn btn-outline-dark mt-auto" href="#">
-                            Add to Cart
+                          <NavLink to='Product-cart' ><button className="btn btn-outline-dark mt-auto" onClick={()=>{setCart([...cart,{id:val.id,pimg:val.product_image,pcat:val.category_name,pbrand:val.Brand_name,pnm:val.product_name,price:val.product_price,pqnty:1,ptotal:val.product_price}])}}>Add to Cart
+                          </button>
                           </NavLink>
                           </div>
                           <div className="float-end">
