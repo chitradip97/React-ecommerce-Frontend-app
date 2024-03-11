@@ -4,7 +4,8 @@ export const Cartcontext=createContext();
 
 const Context=({children})=>{console.log('context reloded')
     const [cart,setCart]=useState([]);
-    return <Cartcontext.Provider value={{cart,setCart}}>{children}</Cartcontext.Provider>
+    const [summery,setSummery]=useState({});
+    return <Cartcontext.Provider value={{cart,setCart,summery,setSummery}}>{children}</Cartcontext.Provider>
 };
 
 export default Context;

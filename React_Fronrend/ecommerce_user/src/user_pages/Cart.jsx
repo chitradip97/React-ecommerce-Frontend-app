@@ -6,6 +6,7 @@ import { NavLink } from "react-router-dom";
 
 function Cart() {
   const {cart,setCart}=useContext(Cartcontext);
+  const {summery,setSummery}=useContext(Cartcontext);
   var SubTotal=0;
   var shipping=0;
   var grandtotal=0;
@@ -59,6 +60,9 @@ function Cart() {
                         {
                           cart.map((val,index)=>{
                             SubTotal+=val.ptotal;
+                            shipping=(SubTotal*2.5)/100;
+                            grandtotal=SubTotal+shipping;
+                            
                            return < >
                                 <div className="row mb-4 d-flex justify-content-between align-items-center">
                           <div className="col-md-2 col-lg-2 col-xl-2">
@@ -112,7 +116,10 @@ function Cart() {
                                 <hr className="my-4" />
                             </>
                           })
+
+                          
                         }
+                        {/* {setSummery({subtotal:SubTotal,shipping:shipping,grandtotal:grandtotal})} */}
 
                         
 
@@ -235,7 +242,7 @@ function Cart() {
                         {/* {shipping=(SubTotal*2.5)/100} */}
                         <div className="d-flex justify-content-between mb-5">
                           <h5 className="text-uppercase">Shipping charge</h5>
-                          <h5>Rs. {shipping=(SubTotal*2.5)/100}</h5>
+                          <h5>Rs. {shipping}</h5>
                         </div>
 
                         {/* <h5 className="text-uppercase mb-3">Give code</h5>
@@ -257,14 +264,14 @@ function Cart() {
                           {/* {grandtotal=SubTotal+shipping} */}
                         <div className="d-flex justify-content-between mb-5">
                           <h5 className="text-uppercase">Total price</h5>
-                          <h5>Rs. {grandtotal=SubTotal+shipping}</h5>
+                          <h5>Rs. {grandtotal}</h5>
                         </div>
-                          <NavLink to={'checkout'}>
+                          <NavLink to={'Checkout'}>
                         <button
                           type="button"
                           className="btn btn-dark btn-block btn-lg"
                           data-mdb-ripple-color="dark"
-                          
+                          onClick={()=>{{setSummery({subtotal:SubTotal,shipping:shipping,grandtotal:grandtotal})}}}
                         >
                           Check out
                         </button>
