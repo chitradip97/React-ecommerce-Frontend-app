@@ -70,13 +70,14 @@ function Navber_User() {
               </li>
             </ul>
             <form className="d-flex">
-              <button className="btn btn-outline-dark" type="submit">
+            <NavLink to='Product-cart' ><button className="btn btn-outline-dark" type="submit">
                 <i className="bi-cart-fill me-1" />
                 Cart
                 <span className="badge bg-dark text-white ms-1 rounded-pill">
                   {cart.length}
                 </span>
               </button>
+              </NavLink>
             </form>
 
             {/* Navbar*/}

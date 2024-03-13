@@ -47,6 +47,9 @@ function Body_user() {
     getAllMobile();
     getAllWatches();
   },[product])
+  useEffect(()=>{
+console.log(mobile);
+  },[mobile])
   return (
     <>
       <>
@@ -65,7 +68,8 @@ function Body_user() {
         <section className="py-1">
           <div className="container px-4 px-lg-5 mt-5">
             <div className="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-              {mobile.splice(0,8).map((val, index) => {
+              {console.log(mobile)}
+              {mobile.slice(0,8).map((val, index) => { console.log(val)
                 return (
                   <div className="col mb-5">
                     <div className="card h-100">
@@ -89,9 +93,10 @@ function Body_user() {
                       <div className="card-footer p-4 pt-0 border-top-0 bg-transparent">
                         <div className="text-center ">
                           <div className="float-start">
-                          <NavLink to='Product-cart' ><button className="btn btn-outline-dark mt-auto" onClick={()=>{setCart([...cart,{id:val.id,pimg:val.product_image,pcat:val.category_name,pbrand:val.Brand_name,pnm:val.product_name,price:val.product_price,pqnty:1,ptotal:val.product_price}])}}>Add to Cart
+                          {/* <NavLink to='Product-cart' > */}
+                            <button className="btn btn-outline-dark mt-auto" onClick={()=>{setCart([...cart,{id:val.id,pimg:val.product_image,pcat:val.category_name,pbrand:val.Brand_name,pnm:val.product_name,price:val.product_price,pqnty:1,ptotal:val.product_price}])}}>Add to Cart
                           </button>
-                          </NavLink>
+                          {/* </NavLink> */}
                           </div>
                           <div className="float-end">
                           <NavLink to={`Product-desc/${val.id}`}><button type="button" class="btn btn-info">View</button></NavLink>
@@ -164,7 +169,7 @@ function Body_user() {
         <section className="py-1">
           <div className="container px-4 px-lg-5 mt-5">
             <div className="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-              {watches.splice(0,8).map((val, index) => {
+              {watches.slice(0,8).map((val, index) => {
                 return (
                   <div className="col mb-5">
                     <div className="card h-100">
@@ -187,9 +192,8 @@ function Body_user() {
                       <div className="card-footer p-4 pt-0 border-top-0 bg-transparent">
                         <div className="text-center">
                         <div className="float-start">
-                          <a className="btn btn-outline-dark mt-auto" href="#">
-                            Add to Cart
-                          </a>
+                        <button className="btn btn-outline-dark mt-auto" onClick={()=>{setCart([...cart,{id:val.id,pimg:val.product_image,pcat:val.category_name,pbrand:val.Brand_name,pnm:val.product_name,price:val.product_price,pqnty:1,ptotal:val.product_price}])}}>Add to Cart
+                          </button>
                           </div>
                           <div className="float-end">
                           <NavLink to={`Product-desc/${val.id}`}><button type="button" class="btn btn-info">View</button></NavLink>

@@ -1,8 +1,8 @@
 import React from "react";
 import { NavLink,useNavigate } from "react-router-dom";
-import { useState,useEffect } from 'react';
+import { useState,useEffect,useContext } from 'react';
 import axios from 'axios';
-
+import { Cartcontext } from "../../Context";
 function User_login() {
   // return (
   //   <>
@@ -93,7 +93,7 @@ function User_login() {
   //   </>
   // );
 
-  
+  const [loginid, setLoginid] = useState([])
   const [login, setLogin] = useState([]);
   const [email,setEmail]=useState("");
   const [password,setPassword]=useState("");
@@ -119,6 +119,7 @@ function User_login() {
        if(val.email==email && val.password==password)
        {
          localStorage.setItem('login',true);
+         localStorage.setItem('loginid',val.id);
          return navigate('/')
        }
     })

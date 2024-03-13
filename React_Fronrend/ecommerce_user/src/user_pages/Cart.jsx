@@ -1,6 +1,6 @@
 import React from "react";
 import "../user_assets/user_cart/cart.css";
-import { useState,useContext } from "react";
+import { useState,useContext,useEffect } from "react";
 import { Cartcontext } from "../Context";
 import { NavLink } from "react-router-dom";
 
@@ -32,8 +32,13 @@ function Cart() {
      setCart(cart=>cart.map(val=>val.id==id?{...val,pqnty:val.pqnty+1,ptotal:val.price*(val.pqnty+1)}:val))
     
   }
-
-  return (
+  const login=localStorage.getItem('login');
+  const[loginenable,setLoginenable]=useState('');
+  useEffect(()=>{
+  setLoginenable(login)
+  },[loginenable])
+  if(login)
+  {return (
     <>
       <section
         className="h-100 h-custom"
@@ -237,7 +242,7 @@ function Cart() {
 
                         <div className="d-flex justify-content-between mb-4">
                           <h5 className="text-uppercase">items {cart.length}</h5>
-                          {/* <h5>€ 132.00</h5> */}
+                          <h5>Rs. {SubTotal}</h5>
                         </div>
                         {/* {shipping=(SubTotal*2.5)/100} */}
                         <div className="d-flex justify-content-between mb-5">
@@ -288,6 +293,23 @@ function Cart() {
       </section>
     </>
   );
+} else{
+  return(
+    <>
+      <div className="container mx-4 mt-2 ">
+        <div className="row">
+        <div class="alert alert-danger">
+          <strong>Permission denied!</strong> Please Login first.
+        </div>
+
+        </div>
+      {/* <h1>Please Login first</h1> */}
+      </div>
+    </>
+
+  )
+  
+}
 }
 
 export default Cart;
