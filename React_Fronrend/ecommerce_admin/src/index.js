@@ -15,6 +15,8 @@ import Brand from './admin_pages/Brand';
 import Orders from './admin_pages/Orders';
 import Blogs from './admin_pages/Blogs';
 import Banner from './admin_pages/Banner';
+import Shipping_details from './admin_pages/Shipping_details';
+import Payment_details from './admin_pages/Payment_details';
 // Components
 import Add_product from './admin_components/product/Add_product';
 import View_product from './admin_components/product/View_product';
@@ -51,6 +53,8 @@ const router=createBrowserRouter(
         </Route>
         <Route path='Brand'  element={<Brand/>}/>
         <Route path='Orders'  element={<Orders/>}/>
+        <Route path='shipping-details'  element={<Shipping_details/>}/>
+        <Route path='payment-details'  element={<Payment_details/>}/>
         <Route path='Blogs'  element={<Blogs/>}/>
         <Route path='Banner'  element={<Banner/>}/>
         <Route path='Admin-register'  element={<Admin_register/>}/>

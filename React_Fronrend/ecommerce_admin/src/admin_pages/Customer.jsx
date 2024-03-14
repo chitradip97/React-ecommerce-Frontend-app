@@ -68,7 +68,7 @@ function Customer() {
                                     <th>Customer NAME</th>
                                     <th>Customer Email</th>
                                     <th>Customer Phone</th>
-                                    <th>Customer Address</th>
+                                    {/* <th>Customer Address</th> */}
                                     <th>Action</th>
                                 </tr>
                                 </thead>
@@ -78,10 +78,10 @@ function Customer() {
                                     return (
                                     <tr key={i}>
                                         <td>{i+1}</td>
-                                        <td>{customer.customer_name}</td>
+                                        <td>{customer.user_name}</td>
                                         <td>{customer.email}</td>
                                         <td>{customer.phone}</td>
-                                        <td>{customer.address}</td>
+                                        {/* <td>{customer.address}</td> */}
                                         <td><button className="btn btn-danger"
                                           onClick={()=>{handleDelete(customer.id)}}
                                          >Delete</button></td>

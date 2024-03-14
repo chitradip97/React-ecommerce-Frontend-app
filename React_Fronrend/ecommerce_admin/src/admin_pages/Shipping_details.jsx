@@ -1,19 +1,19 @@
-import React from 'react'
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 import '../admin_assets/css/Product_style.css';
 import { Outlet } from 'react-router-dom';
 import { useState,useEffect } from 'react';
 import axios from 'axios';
 
-function Orders() {
-    const [orders, setOrders] = useState([]);
+function Shipping_details() {
+    const [ship_detail, setShip_detail] = useState([]);
     async function getAllorder() {
     try {
         const orders_all = await axios.get(
-          "http://127.0.0.1:1234/api/orders"
+          "http://127.0.0.1:1234/api/shipping-details"
         );
         console.log(orders_all.data);
-        setOrders(orders_all.data);
+        setShip_detail(orders_all.data);
       } catch (error) {
         console.log(error);
       }
@@ -58,35 +58,35 @@ function Orders() {
                    <div class="row">
                        <div class="col-xl-12 col-md-12">
                        <div class="card  ">
-                           <div class="card-footer"> <h5 class="basic_font">Order List :</h5> </div>
+                           <div class="card-footer"> <h5 class="basic_font">Shipping Details :</h5> </div>
                            <div class="card-body ">
                                
                                               
                                    <table class="table table-striped">
                                    <thead>
                                    <tr>
-                                   <th>Order sr. Id</th>
+                                   <th> sr. Id</th>
                                     <th>Shipping Id.</th>
-                                    <th>Product id.</th>
-                                    <th>Product Category</th>
-                                    <th>Product Brand</th>
-                                    <th>Product Name</th>
-                                    <th>Product Quantity</th>
+                                    <th>Customer id.</th>
+                                    <th>Firstname</th>
+                                    <th>Lastname</th>
+                                    <th>Phone</th>
+                                    <th>Email</th>
                                     <th>Action</th>
                                    </tr>
                                    </thead>
                                    <tbody>
    
-                                   {orders.map((order, i) => {
+                                   {ship_detail.map((order, i) => {
                                        return (
                                        <tr key={i}>
                                            <td>{i+1}</td>
-                                           <td>{order.Shipping_id}</td>
-                                           <td>{order.Product_id}</td>
-                                           <td>{order.Product_category}</td>
-                                           <td>{order.Product_brand}</td>
-                                           <td>{order.Product_name}</td>
-                                           <td>{order.Product_quantity}</td>
+                                           <td>{order.id}</td>
+                                           <td>{order.Customer_id}</td>
+                                           <td>{order.Shipping_Fname}</td>
+                                           <td>{order.Shipping_Lname}</td>
+                                           <td>{order.Phone}</td>
+                                           <td>{order.Email}</td>
                                            <td><button className="btn btn-danger"
                                             //  onClick={()=>{handleDelete(order.id)}}
                                             >Delete</button></td>
@@ -135,4 +135,4 @@ function Orders() {
          }
 }
 
-export default Orders;
+export default Shipping_details;

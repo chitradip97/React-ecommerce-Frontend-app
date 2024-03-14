@@ -1,19 +1,19 @@
-import React from 'react'
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 import '../admin_assets/css/Product_style.css';
 import { Outlet } from 'react-router-dom';
 import { useState,useEffect } from 'react';
 import axios from 'axios';
 
-function Orders() {
-    const [orders, setOrders] = useState([]);
+function Payment_details() {
+    const [payments, setPayments] = useState([]);
     async function getAllorder() {
     try {
         const orders_all = await axios.get(
-          "http://127.0.0.1:1234/api/orders"
+          "http://127.0.0.1:1234/api/payment-details"
         );
         console.log(orders_all.data);
-        setOrders(orders_all.data);
+        setPayments(orders_all.data);
       } catch (error) {
         console.log(error);
       }
@@ -58,7 +58,7 @@ function Orders() {
                    <div class="row">
                        <div class="col-xl-12 col-md-12">
                        <div class="card  ">
-                           <div class="card-footer"> <h5 class="basic_font">Order List :</h5> </div>
+                           <div class="card-footer"> <h5 class="basic_font">Payment details :</h5> </div>
                            <div class="card-body ">
                                
                                               
@@ -67,26 +67,29 @@ function Orders() {
                                    <tr>
                                    <th>Order sr. Id</th>
                                     <th>Shipping Id.</th>
-                                    <th>Product id.</th>
-                                    <th>Product Category</th>
-                                    <th>Product Brand</th>
-                                    <th>Product Name</th>
-                                    <th>Product Quantity</th>
+                                    
+                                    <th>Cardname</th>
+                                    <th>Card Number</th>
+                                    <th>Cvv</th>
+                                    <th>Expairy</th>
+                                    <th>Total Amount</th>
+                                    <th>Payment date</th>
                                     <th>Action</th>
                                    </tr>
                                    </thead>
                                    <tbody>
    
-                                   {orders.map((order, i) => {
+                                   {payments.map((order, i) => {
                                        return (
                                        <tr key={i}>
                                            <td>{i+1}</td>
                                            <td>{order.Shipping_id}</td>
-                                           <td>{order.Product_id}</td>
-                                           <td>{order.Product_category}</td>
-                                           <td>{order.Product_brand}</td>
-                                           <td>{order.Product_name}</td>
-                                           <td>{order.Product_quantity}</td>
+                                           <td>{order.Cardname}</td>
+                                           <td>{order.Card_number}</td>
+                                           <td>{order.Cvv}</td>
+                                           <td>{order.Expairy}</td>
+                                           <td>{order.Total_amount}</td>
+                                           <td>{order.created_at}</td>
                                            <td><button className="btn btn-danger"
                                             //  onClick={()=>{handleDelete(order.id)}}
                                             >Delete</button></td>
@@ -135,4 +138,4 @@ function Orders() {
          }
 }
 
-export default Orders;
+export default Payment_details;

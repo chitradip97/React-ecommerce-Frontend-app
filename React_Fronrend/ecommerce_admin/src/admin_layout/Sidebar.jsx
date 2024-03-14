@@ -64,6 +64,18 @@ function Sidebar() {
               </div>
               Orders
             </NavLink>
+            <NavLink className="nav-link" to="shipping-details">
+              <div className="sb-nav-link-icon">
+                <i className="fas fa-tachometer-alt" />
+              </div>
+              Shipping Details
+            </NavLink>
+            <NavLink className="nav-link" to="payment-details">
+              <div className="sb-nav-link-icon">
+                <i className="fas fa-tachometer-alt" />
+              </div>
+              Payment Details
+            </NavLink>
             <div>
             {/* <Link
               className="nav-link collapsed"
