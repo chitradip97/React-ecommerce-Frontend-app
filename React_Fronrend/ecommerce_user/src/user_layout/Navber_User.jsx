@@ -11,7 +11,7 @@ function Navber_User() {
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container px-4 px-lg-5">
           <a className="navbar-brand" href="#!">
-            Start Bootstrap
+            Ecommerce
           </a>
           <button
             className="navbar-toggler"
@@ -99,14 +99,14 @@ function Navber_User() {
                 >
                   <li>
                     <Link className="dropdown-item" to="User_login">
-                      User Login
+                      Login
                     </Link>
                   </li>
-                  <li>
+                  {/* <li>
                     <Link className="dropdown-item" to="Admin_login">
                       Admin Login
                     </Link>
-                  </li>
+                  </li> */}
                   <li>
                     <Link className="dropdown-item" to="Registration">
                       Register

@@ -21,58 +21,58 @@ console.log(login)
           <div className="row">
             <div className="col-xl-3 col-md-6">
               <div className="card bg-primary text-white mb-4">
-                <div className="card-body">Primary Card</div>
+                <div className="card-body">Total no of Customer</div>
                 <div className="card-footer d-flex align-items-center justify-content-between">
                   <a className="small text-white stretched-link" href="#">
-                    View Details
+                    3
                   </a>
-                  <div className="small text-white">
+                  {/* <div className="small text-white">
                     <i className="fas fa-angle-right" />
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
             <div className="col-xl-3 col-md-6">
               <div className="card bg-warning text-white mb-4">
-                <div className="card-body">Warning Card</div>
+                <div className="card-body">Total no of Product</div>
                 <div className="card-footer d-flex align-items-center justify-content-between">
                   <a className="small text-white stretched-link" href="#">
-                    View Details
+                    21
                   </a>
-                  <div className="small text-white">
+                  {/* <div className="small text-white">
                     <i className="fas fa-angle-right" />
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
             <div className="col-xl-3 col-md-6">
               <div className="card bg-success text-white mb-4">
-                <div className="card-body">Success Card</div>
+                <div className="card-body">Todays Sale</div>
                 <div className="card-footer d-flex align-items-center justify-content-between">
                   <a className="small text-white stretched-link" href="#">
-                    View Details
+                   Rs. 1156
                   </a>
-                  <div className="small text-white">
+                  {/* <div className="small text-white">
                     <i className="fas fa-angle-right" />
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
             <div className="col-xl-3 col-md-6">
               <div className="card bg-danger text-white mb-4">
-                <div className="card-body">Danger Card</div>
+                <div className="card-body">Total Sale</div>
                 <div className="card-footer d-flex align-items-center justify-content-between">
                   <a className="small text-white stretched-link" href="#">
-                    View Details
+                   Rs. 207365
                   </a>
-                  <div className="small text-white">
+                  {/* <div className="small text-white">
                     <i className="fas fa-angle-right" />
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
           </div>
-          <div className="row">
+          {/* <div className="row">
             <div className="col-xl-6">
               <div className="card mb-4">
                 <div className="card-header">
@@ -95,7 +95,7 @@ console.log(login)
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </>
     );
