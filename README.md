@@ -68,6 +68,9 @@
 ![add blog segment](https://github.com/chitradip97/React-ecommerce-Frontend-app/assets/123654669/5c2914a9-0c3a-44bb-9535-5f301973a84d)
 
 
+# Thank you for your time and consideration.
+
+
 
 
 
